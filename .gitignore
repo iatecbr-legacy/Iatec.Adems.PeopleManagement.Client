@@ -322,7 +322,6 @@ ASALocalRun/
 # Aditional ignores 
 *.swp
 .swagger-codegen
-.swagger-codegen-ignore
 
 # Ignore downloaded files
 *.dl/*

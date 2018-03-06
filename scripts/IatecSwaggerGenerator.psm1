@@ -115,8 +115,7 @@ function Invoke-GenerateClient($version, $guid)
         "-DpackageVersion=$version"
     
     # Delete undesired generated files
-    Remove-IfExists (Join-Path "$root" -ChildPath "src/.swagger-codegen")
-    Remove-IfExists (Join-Path "$root" -ChildPath "src/.swagger-codegen-ignore")
+    Remove-IfExists (Join-Path "$root" -ChildPath ".swagger-codegen")
 }
 function Invoke-IatecGenerate(
     $type,
