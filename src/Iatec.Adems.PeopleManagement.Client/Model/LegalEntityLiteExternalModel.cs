@@ -34,7 +34,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Model
         /// Initializes a new instance of the <see cref="LegalEntityLiteExternalModel" /> class.
         /// </summary>
         /// <param name="IdentifierDocumentNumber">IdentifierDocumentNumber.</param>
-        /// <param name="Id">Id.</param>
+        /// <param name="Identity">Id.</param>
         /// <param name="Acronym">Acronym.</param>
         /// <param name="Code">Code.</param>
         /// <param name="HierarchyNodeId">HierarchyNodeId.</param>
@@ -46,14 +46,14 @@ namespace Iatec.Adems.PeopleManagement.Client.Model
         /// <param name="Region">Region.</param>
         /// <param name="TimeZone">TimeZone.</param>
         /// <param name="Country">Country.</param>
-        public LegalEntityLiteExternalModel(string IdentifierDocumentNumber = default(string), Guid Id = default(Guid), string Acronym = default(string), string Code = default(string),
+        public LegalEntityLiteExternalModel(string IdentifierDocumentNumber = default(string), Guid Identity = default(Guid), string Acronym = default(string), string Code = default(string),
             Guid? HierarchyNodeId = default(Guid?), bool IsAdventistEntity = default(bool), DateTime LastUpdate = default(DateTime), string LegalName = default(string), string Name = default(string),
             Guid? NewIdentity = default(Guid?), CultureModel Region = default(CultureModel), TimeZoneModel TimeZone = default(TimeZoneModel),
             CountryLiteSearchModel Country = default(CountryLiteSearchModel))
         {
             this.IsAdventistEntity = IsAdventistEntity;
             this.IdentifierDocumentNumber = IdentifierDocumentNumber;
-            this.Id = Id;
+            this.Identity = Identity;
             this.Acronym = Acronym;
             this.Code = Code;
             this.HierarchyNodeId = HierarchyNodeId;
@@ -76,7 +76,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name = "id", EmitDefaultValue = false)]
-        public Guid Id { get; set; }
+        public Guid Identity { get; set; }
 
         /// <summary>
         /// Gets or Sets Acronym
@@ -153,7 +153,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Model
             var sb = new StringBuilder();
             sb.Append("class LegalEntityLiteExternalModel {\n");
             sb.Append("  IdentifierDocumentNumber: ").Append(IdentifierDocumentNumber).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Id: ").Append(Identity).Append("\n");
             sb.Append("  Acronym: ").Append(Acronym).Append("\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("  HierarchyNodeId: ").Append(HierarchyNodeId).Append("\n");
@@ -205,9 +205,9 @@ namespace Iatec.Adems.PeopleManagement.Client.Model
                     this.IdentifierDocumentNumber.Equals(input.IdentifierDocumentNumber))
                 ) &&
                 (
-                    this.Id == input.Id ||
-                    (this.Id != default(Guid) &&
-                    this.Id.Equals(input.Id))
+                    this.Identity == input.Identity ||
+                    (this.Identity != default(Guid) &&
+                    this.Identity.Equals(input.Identity))
                 ) &&
                 (
                     this.Acronym == input.Acronym ||
@@ -276,8 +276,8 @@ namespace Iatec.Adems.PeopleManagement.Client.Model
                 int hashCode = 41;
                 if (this.IdentifierDocumentNumber != null)
                     hashCode = hashCode * 59 + this.IdentifierDocumentNumber.GetHashCode();
-                if (this.Id != default(Guid))
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
+                if (this.Identity != default(Guid))
+                    hashCode = hashCode * 59 + this.Identity.GetHashCode();
                 if (this.Acronym != null)
                     hashCode = hashCode * 59 + this.Acronym.GetHashCode();
                 if (this.Code != null)
