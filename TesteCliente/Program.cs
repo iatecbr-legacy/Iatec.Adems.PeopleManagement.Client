@@ -25,7 +25,7 @@ namespace TesteCliente
             var apiConfig = new Iatec.Adems.PeopleManagement.Client.Configuration()
             {
                 AccessToken = tokens.AccessToken,
-                BasePath = "http://localhost:60736",
+                BasePath = "Uri_PeopleApi",//ws-peoplemgmt???.sdasystems.org/bra/
             };
           
 
