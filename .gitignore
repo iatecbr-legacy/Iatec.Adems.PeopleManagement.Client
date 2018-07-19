@@ -326,3 +326,4 @@ ASALocalRun/
 # Ignore downloaded files
 *.dl/*
 !*.dl/do_not_delete
+/TesteCliente/TesteCliente_old.csproj

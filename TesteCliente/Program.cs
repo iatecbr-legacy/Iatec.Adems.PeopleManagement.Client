@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 
 namespace TesteCliente
 {
@@ -13,24 +14,32 @@ namespace TesteCliente
     {
         private static void Main(string[] args)
         {
-            const string CLIENT_ID = "000000000000000000000000000000000000000"; //DEV
-            const string CLIENT_SECRET = "XASUDIYASIODUYAOSUIDYAOSUDYAIASJFNASJFALSDHAISU";
+            //client-credentials application
+            const string CLIENT_ID = "valid_guid";
+            const string CLIENT_SECRET = "valid_secret";
+            const string SCOPE = "api_scope";
 
-            var discoveryClient = new DiscoveryClient("https://login-dev.sdasystems.org");
-            var discovery = discoveryClient.GetAsync().Result;
+            var httpClient = new HttpClient();
+            var discovery = httpClient.GetDiscoveryDocumentAsync("https://login.sdasystems.org").Result;
 
-            var tokenClient = new TokenClient(discovery.TokenEndpoint, CLIENT_ID, CLIENT_SECRET);
-            var tokens = tokenClient.RequestClientCredentialsAsync("scope").Result;
+            var clientCredentialsTokenRequest = new ClientCredentialsTokenRequest()
+            {
+                ClientId = CLIENT_ID,
+                ClientSecret = CLIENT_SECRET,
+                Scope = SCOPE,
+                Address = discovery.TokenEndpoint,
+            };
+
+            var tokens = httpClient.RequestClientCredentialsTokenAsync(clientCredentialsTokenRequest).Result;
             // ---------------------------------------------------------------------------------------------------------- //
-            var apiConfig = new Iatec.Adems.PeopleManagement.Client.Configuration()
+            var apiConfig = new Configuration()
             {
                 AccessToken = tokens.AccessToken,
-                BasePath = "Uri_PeopleApi",//ws-peoplemgmt???.sdasystems.org/bra/
+                BasePath = "https://ws-peoplemgmt.sdasystems.org/bra/",//-dev,-ho
             };
-          
 
             EmergencyContactTest(apiConfig);
-            //AddressTest(apiConfig);
+            AddressTest(apiConfig);
             //NaturalPersonTest(apiConfig);
             //AddressTypeTest(apiConfig);
             //AllergyTypeTeste(apiConfig);
@@ -45,10 +54,12 @@ namespace TesteCliente
         {
             try
             {
-                var api = new EmergencyContactApi(apiConfig);
                 var npApi = new NaturalPersonApi(apiConfig);
-
                 var person2 = npApi.GetPageActiveByFilterForExternal(10, 0, "william de qua");
+
+                npApi.NaturalPersonSaveSystemReference(person2.Items.Select(x => x.Id).ToList());
+
+                var api = new EmergencyContactApi(apiConfig);
                 var saved = api.SaveEmergencyContact(new EmergencyContactLiteModel
                 {
                     ContactPhone = "Phone",
@@ -120,6 +131,7 @@ namespace TesteCliente
                 {
                     AddressLine01 = "teste erro",
                     AddressType = new AddressTypeModel { Id = list.First().Id },
+                    PersonId = person2.Items.FirstOrDefault().Id
                 });
 
                 return true;
