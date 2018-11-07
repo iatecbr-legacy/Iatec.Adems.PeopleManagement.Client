@@ -2555,7 +2555,18 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (legalEntityIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "legalEntityIdList", legalEntityIdList)); // query parameter
+            //if (legalEntityIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "legalEntityIdList", legalEntityIdList)); // query parameter
+
+
+            if (legalEntityIdList != null && legalEntityIdList.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(legalEntityIdList); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = legalEntityIdList; // byte array
+            }
+
 
             // authentication (client_credentials) required
             // oauth required
@@ -2623,7 +2634,16 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (legalEntityIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "legalEntityIdList", legalEntityIdList)); // query parameter
+            //if (legalEntityIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "legalEntityIdList", legalEntityIdList)); // query parameter
+
+            if (legalEntityIdList != null && legalEntityIdList.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(legalEntityIdList); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = legalEntityIdList; // byte array
+            }
 
             // authentication (client_credentials) required
             // oauth required

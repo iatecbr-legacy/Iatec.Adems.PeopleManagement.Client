@@ -14,13 +14,30 @@ namespace TesteCliente
     {
         private static void Main(string[] args)
         {
+            var teste = new MyClass1
+            {
+                casa = "teste",
+                opa = 1,
+                update = DateTime.UtcNow,
+                sub = new SubClass1
+                {
+                    home = "casa",
+                    lastdate = DateTime.Now,
+                    oxi = 3
+                }
+            };
+
+
+            //Bruno Lambert
+
+
             //client-credentials application
-            const string CLIENT_ID = "valid_guid";
-            const string CLIENT_SECRET = "valid_secret";
-            const string SCOPE = "api_scope";
+            const string CLIENT_ID = "0fbfaafa-c74b-4da2-9307-6fdcdc5cf58b";
+            const string CLIENT_SECRET = "OLGSXm1Gf0MV8QfHASnepdXOLnIaBFBvMurCTGD5XnO7n3zAy1nX7AwOQ0lOtqjDYwDK783B9mY3jpCv";
+            const string SCOPE = "peoplemgmt-ho";
 
             var httpClient = new HttpClient();
-            var discovery = httpClient.GetDiscoveryDocumentAsync("https://login.sdasystems.org").Result;
+            var discovery = httpClient.GetDiscoveryDocumentAsync("https://login-ho.sdasystems.org").Result;
 
             var clientCredentialsTokenRequest = new ClientCredentialsTokenRequest()
             {
@@ -35,19 +52,80 @@ namespace TesteCliente
             var apiConfig = new Configuration()
             {
                 AccessToken = tokens.AccessToken,
-                BasePath = "https://ws-peoplemgmt.sdasystems.org/bra/",//-dev,-ho
+                BasePath = "http://localhost:60736/",//-dev,-ho
+                //BasePath = "https://ws-peoplemgmt-ho.sdasystems.org/bra/",//-dev,-ho
             };
 
-            EmergencyContactTest(apiConfig);
-            AddressTest(apiConfig);
-            //NaturalPersonTest(apiConfig);
+            //PhoneTypeTest(apiConfig);
+            //LegalEntityTest(apiConfig);
+            //CountryTest(apiConfig);
+            //EmergencyContactTest(apiConfig);
+            //AddressTest(apiConfig);
+            NaturalPersonTest(apiConfig);
             //AddressTypeTest(apiConfig);
             //AllergyTypeTeste(apiConfig);
             //DisabilityTypeTeste(apiConfig);
-
+            //ZipPostalCodeAddressTest(apiConfig);
 
             Console.WriteLine("-- END --");
             Console.ReadLine();
+        }
+
+        private static bool PhoneTypeTest(Iatec.Adems.PeopleManagement.Client.Configuration apiConfig)
+        {
+            try
+            {
+                var phoneTypeApi = new PhoneTypeApi(apiConfig);
+                var typeList = phoneTypeApi.GetListPhoneTypeByFilterAsync().Result;
+                phoneTypeApi.PhoneTypeSaveSystemReference(typeList.First().Id);
+                return true;
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+        }
+
+        private static bool ZipPostalCodeAddressTest(Iatec.Adems.PeopleManagement.Client.Configuration apiConfig)
+        {
+            try
+            {
+                var zipPostalCodeAddressApi = new ZipPostalCodeAddressApi(apiConfig);
+                var zipList = zipPostalCodeAddressApi.GetListZipPostalCodeAddressForSyncAsync(false, new DateTime(2018, 10, 30)).Result;
+                return true;
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+        }
+
+        private static bool CountryTest(Iatec.Adems.PeopleManagement.Client.Configuration apiConfig)
+        {
+            try
+            {
+                var countryApi = new CountryApi(apiConfig);
+                var country = countryApi.GetCurrent();
+                return true;
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+        }
+
+        private static bool LegalEntityTest(Iatec.Adems.PeopleManagement.Client.Configuration apiConfig)
+        {
+            try
+            {
+                var legalEntityApi = new LegalEntityApi(apiConfig);
+                var legalEntity = legalEntityApi.GetByIdentifierDocumentNumber("43283811001636");
+                return true;
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
         }
 
         private static bool EmergencyContactTest(Iatec.Adems.PeopleManagement.Client.Configuration apiConfig)
@@ -55,7 +133,7 @@ namespace TesteCliente
             try
             {
                 var npApi = new NaturalPersonApi(apiConfig);
-                var person2 = npApi.GetPageActiveByFilterForExternal(10, 0, "william de qua");
+                var person2 = npApi.GetPageActiveByFilterForExternal2("05-02-1994", GenderModel.Male, 10, 0);
 
                 npApi.NaturalPersonSaveSystemReference(person2.Items.Select(x => x.Id).ToList());
 
@@ -70,9 +148,9 @@ namespace TesteCliente
 
                 return true;
             }
-            catch (ApiException ex)
+            catch (ApiException)
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -83,20 +161,24 @@ namespace TesteCliente
             {
                 var npApi = new NaturalPersonApi(apiConfig);
 
-                var teste = npApi.SaveForExternal(new NaturalPersonLiteExternalModel
-                {
-                    AuthenticationUserName = "jabes.tao",
-                    FirstName = "Jabes",
-                    Gender = GenderModel.Male,
-                    BirthDate = new DateTime(1994, 2, 5),
-                    IdentifierDocumentNumber = "87708647053",
-                    MiddleName = "ta",
-                    LastName = "o",
-                    FullName = "Jabes ta o",
-                    MotherName = "mae",
-                });
+                var teste = npApi.GetPageActiveByFilterForExternal2Async("05-02-1994", GenderModel.Male, 10, 0).Result;
+                //var teste = npApi.GetPageActiveByFilterForExternal(0,1);
+
+                //var teste = npApi.SaveForExternal(new NaturalPersonLiteExternalModel
+                //{
+                //    AuthenticationUserName = "jabes.tao2",
+                //    FirstName = "Jabes2",
+                //    Gender = GenderModel.Male,
+                //    BirthDate = new DateTime(1994, 2, 5),
+                //    IdentifierDocumentNumber = "65534613688",
+                //    MiddleName = "ta",
+                //    LastName = "o",
+                //    FullName = "Jabes ta o",
+                //    MotherName = "mae",
+                //});
 
                 //var teste2 = npApi.GetByUserName("jabes.tao");
+                //var teste2 = npApi.GetByIdForExternal(new Guid("2b0632f6-9503-4157-9122-a990004e6a1e"));
 
                 //basicPropList.Add(new NPBasicPropertyModel
                 //{
@@ -107,13 +189,18 @@ namespace TesteCliente
 
                 //var personList = npApi.GetListByBasicPropertyList(basicPropList);
 
-                //npApi.NaturalPersonDeleteNaturalPerson(new System.Collections.Generic.List<Guid> { teste.Id });
+                var list = npApi.GetListNaturalPersonLastSystemUpdateAsync().Result;
+                var ids = list.Select(a => a.NaturalPersonId).Distinct().ToList();
+
+                npApi.NaturalPersonUpdateNotice(ids);
+
+                //npApi.NaturalPersonDeleteNaturalPerson(new System.Collections.Generic.List<Guid> { teste2.Id });
 
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -136,9 +223,9 @@ namespace TesteCliente
 
                 return true;
             }
-            catch (ApiException ex)
+            catch (ApiException)
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -161,7 +248,7 @@ namespace TesteCliente
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -185,7 +272,7 @@ namespace TesteCliente
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -208,8 +295,38 @@ namespace TesteCliente
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
         }
+    }
+
+    class SubClass1
+    {
+        public int oxi { get; set; }
+        public string home { get; set; }
+        public DateTime lastdate { get; set; }
+    }
+
+    class SubClass2
+    {
+        public int oxi { get; set; }
+        public string home { get; set; }
+        public DateTime lastdate { get; set; }
+    }
+
+    class MyClass2
+    {
+        public int opa { get; set; }
+        public string casa { get; set; }
+        public DateTime update { get; set; }
+        public SubClass2 sub { get; set; }
+    }
+
+    class MyClass1
+    {
+        public int opa { get; set; }
+        public string casa { get; set; }
+        public DateTime update { get; set; }
+        public SubClass1 sub { get; set; }
     }
 }
