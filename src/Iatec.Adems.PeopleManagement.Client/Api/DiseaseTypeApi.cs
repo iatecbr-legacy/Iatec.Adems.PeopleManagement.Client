@@ -134,6 +134,30 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
         /// <returns>ApiResponse of List&lt;DiseaseTypeModel&gt;</returns>
         ApiResponse<List<DiseaseTypeModel>> GetListDiseaseTypeByIdListWithHttpInfo(List<Guid> idList = null);
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>List&lt;DiseaseTypeModel&gt;</returns>
+        List<DiseaseTypeModel> GetListDiseaseTypeForUpdate(bool onlyInUse, DateTime? updateDate = null);
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>ApiResponse (List&lt;DiseaseTypeModel&gt;)</returns>
+        ApiResponse<List<DiseaseTypeModel>> GetListDiseaseTypeForUpdateHttpInfo(bool onlyInUse, DateTime? updateDate = null);
+
         #endregion Synchronous Operations
 
         #region Asynchronous Operations
@@ -247,6 +271,31 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
         /// <param name="idList"> (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;DiseaseTypeModel&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<DiseaseTypeModel>>> GetListDiseaseTypeByIdListAsyncWithHttpInfo(List<Guid> idList = null);
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>Task of ApiResponse (List&lt;DiseaseTypeModel&gt;)</returns>
+        System.Threading.Tasks.Task<List<DiseaseTypeModel>> GetListDiseaseTypeForUpdateAsync(bool onlyInUse, DateTime? updateDate = null);
+
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>Task of ApiResponse (List&lt;DiseaseTypeModel&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<DiseaseTypeModel>>> GetListDiseaseTypeForUpdateAsyncHttpInfo(bool onlyInUse, DateTime? updateDate = null);
 
         #endregion Asynchronous Operations
     }
@@ -1057,5 +1106,161 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (List<DiseaseTypeModel>)Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<DiseaseTypeModel>)));
         }
+
+              
+
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>List&lt;DiseaseTypeModel&gt;</returns>
+        public List<DiseaseTypeModel> GetListDiseaseTypeForUpdate(bool onlyInUse, DateTime? updateDate = null)
+        {
+            ApiResponse<List<DiseaseTypeModel>> localVarResponse = GetListDiseaseTypeForUpdateHttpInfo(onlyInUse, updateDate);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>ApiResponse (List&lt;DiseaseTypeModel&gt;)</returns>
+        public ApiResponse<List<DiseaseTypeModel>> GetListDiseaseTypeForUpdateHttpInfo(bool onlyInUse, DateTime? updateDate = null)
+        {
+            var localVarPath = "/diseaseType/forUpdate";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "applications/json",
+                "applications/xml"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (updateDate != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "updateDate", updateDate)); // query parameter
+            localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "onlyInUse", onlyInUse)); // query parameter
+
+            // authentication (client_credentials) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetListDiseaseTypeForUpdate", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<DiseaseTypeModel>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<DiseaseTypeModel>)Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<DiseaseTypeModel>)));
+        }
+
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>Task of List&lt;DiseaseTypeModel&gt;</returns>
+        public async System.Threading.Tasks.Task<List<DiseaseTypeModel>> GetListDiseaseTypeForUpdateAsync(bool onlyInUse, DateTime? updateDate = null)
+        {
+            ApiResponse<List<DiseaseTypeModel>> localVarResponse = await GetListDiseaseTypeForUpdateAsyncHttpInfo(onlyInUse, updateDate);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>Task of ApiResponse (List&lt;DiseaseTypeModel&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<DiseaseTypeModel>>> GetListDiseaseTypeForUpdateAsyncHttpInfo(bool onlyInUse, DateTime? updateDate = null)
+        {
+            var localVarPath = "/diseaseType/forUpdate";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "applications/json",
+                "applications/xml"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (updateDate != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "updateDate", updateDate)); // query parameter
+            localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "onlyInUse", onlyInUse)); // query parameter
+
+            // authentication (client_credentials) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetListDiseaseTypeForUpdate", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<DiseaseTypeModel>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<DiseaseTypeModel>)Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<DiseaseTypeModel>)));
+        }
+
+
     }
 }

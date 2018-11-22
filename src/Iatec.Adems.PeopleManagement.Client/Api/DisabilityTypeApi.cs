@@ -162,6 +162,30 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
         /// <returns>ApiResponse of PagedDisabilityTypeModel</returns>
         ApiResponse<PagedDisabilityTypeModel> GetPageDisabilityTypeAvailableToNaturalPersonWithHttpInfo(Guid? naturalPersonId, int? numRows, int? pageIndex, List<Guid> selectedItems = null);
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>List&lt;DisabilityTypeModel&gt;</returns>
+        List<DisabilityTypeModel> GetListDisabilityTypeForUpdate(bool onlyInUse, DateTime? updateDate = null);
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>ApiResponse (List&lt;DisabilityTypeModel&gt;)</returns>
+        ApiResponse<List<DisabilityTypeModel>> GetListDisabilityTypeForUpdateHttpInfo(bool onlyInUse, DateTime? updateDate = null);
+
         #endregion Synchronous Operations
 
         #region Asynchronous Operations
@@ -303,6 +327,32 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
         /// <param name="selectedItems"> (optional)</param>
         /// <returns>Task of ApiResponse (PagedDisabilityTypeModel)</returns>
         System.Threading.Tasks.Task<ApiResponse<PagedDisabilityTypeModel>> GetPageDisabilityTypeAvailableToNaturalPersonAsyncWithHttpInfo(Guid? naturalPersonId, int? numRows, int? pageIndex, List<Guid> selectedItems = null);
+
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>Task of ApiResponse (List&lt;DisabilityTypeModel&gt;)</returns>
+        System.Threading.Tasks.Task<List<DisabilityTypeModel>> GetListDisabilityTypeForUpdateAsync(bool onlyInUse, DateTime? updateDate = null);
+
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>Task of ApiResponse (List&lt;DisabilityTypeModel&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<DisabilityTypeModel>>> GetListDisabilityTypeForUpdateAsyncHttpInfo(bool onlyInUse, DateTime? updateDate = null);
 
         #endregion Asynchronous Operations
     }
@@ -1289,5 +1339,160 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (PagedDisabilityTypeModel)Configuration.ApiClient.Deserialize(localVarResponse, typeof(PagedDisabilityTypeModel)));
         }
+
+        
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>List&lt;DisabilityTypeModel&gt;</returns>
+        public List<DisabilityTypeModel> GetListDisabilityTypeForUpdate(bool onlyInUse, DateTime? updateDate = null)
+        {
+            ApiResponse<List<DisabilityTypeModel>> localVarResponse = GetListDisabilityTypeForUpdateHttpInfo(onlyInUse, updateDate);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>ApiResponse (List&lt;DisabilityTypeModel&gt;)</returns>
+        public ApiResponse<List<DisabilityTypeModel>> GetListDisabilityTypeForUpdateHttpInfo(bool onlyInUse, DateTime? updateDate = null)
+        {
+            var localVarPath = "/disabilityType/forUpdate";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "applications/json",
+                "applications/xml"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (updateDate != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "updateDate", updateDate)); // query parameter
+            localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "onlyInUse", onlyInUse)); // query parameter
+
+            // authentication (client_credentials) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetListDisabilityTypeForUpdate", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<DisabilityTypeModel>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<DisabilityTypeModel>)Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<DisabilityTypeModel>)));
+        }
+
+
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>Task of List&lt;DisabilityTypeModel&gt;</returns>
+        public async System.Threading.Tasks.Task<List<DisabilityTypeModel>> GetListDisabilityTypeForUpdateAsync(bool onlyInUse, DateTime? updateDate = null)
+        {
+            ApiResponse<List<DisabilityTypeModel>> localVarResponse = await GetListDisabilityTypeForUpdateAsyncHttpInfo(onlyInUse, updateDate);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>Task of ApiResponse (List&lt;DisabilityTypeModel&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<DisabilityTypeModel>>> GetListDisabilityTypeForUpdateAsyncHttpInfo(bool onlyInUse, DateTime? updateDate = null)
+        {
+            var localVarPath = "/disabilityType/forUpdate";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "applications/json",
+                "applications/xml"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (updateDate != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "updateDate", updateDate)); // query parameter
+            localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "onlyInUse", onlyInUse)); // query parameter
+
+            // authentication (client_credentials) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetListDisabilityTypeForUpdate", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<DisabilityTypeModel>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<DisabilityTypeModel>)Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<DisabilityTypeModel>)));
+        }
+
     }
 }
