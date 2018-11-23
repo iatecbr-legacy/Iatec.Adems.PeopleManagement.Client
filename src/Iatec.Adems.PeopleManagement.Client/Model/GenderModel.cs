@@ -27,25 +27,25 @@ namespace Iatec.Adems.PeopleManagement.Client.Model
         {
         }
 
-        private GenderModel(string name, int value_plus1)
+        private GenderModel(string name, int value)
         {
             this.Name = name;
-            this.valuePlus1 = value_plus1;
+            this.value = value;
         }
 
         public string Name { get; }
-        private int valuePlus1;
-        public int Value => valuePlus1 - 1;
+        private int value;
+        public int Value => value;
 
         /// <summary>
         /// Enum Male for value: Male
         /// </summary>
-        public static GenderModel Male = new GenderModel("Male", 1);
+        public static GenderModel Male = new GenderModel("Male", 0);
 
         /// <summary>
         /// Enum Female for value: Female
         /// </summary>
-        public static GenderModel Female = new GenderModel("Female", 2);
+        public static GenderModel Female = new GenderModel("Female", 1);
 
         private static IEnumerable<GenderModel> fields = new[] {
             Male,

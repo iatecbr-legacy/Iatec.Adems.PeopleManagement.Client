@@ -161,7 +161,7 @@ namespace TesteCliente
             {
                 var npApi = new NaturalPersonApi(apiConfig);
 
-                var teste = npApi.GetPageActiveByFilterForExternal2Async("05-02-1994", GenderModel.Male, 10, 0).Result;
+                var teste = npApi.GetPageActiveByFilterForExternalAsync(10, 0,birthDate: "05-02-1994").Result;
                 //var teste = npApi.GetPageActiveByFilterForExternal(0,1);
 
                 //var teste = npApi.SaveForExternal(new NaturalPersonLiteExternalModel
@@ -189,10 +189,10 @@ namespace TesteCliente
 
                 //var personList = npApi.GetListByBasicPropertyList(basicPropList);
 
-                var list = npApi.GetListNaturalPersonLastSystemUpdateAsync().Result;
-                var ids = list.Select(a => a.NaturalPersonId).Distinct().ToList();
+                //var list = npApi.GetListNaturalPersonLastSystemUpdateAsync().Result;
+                //var ids = list.Select(a => a.NaturalPersonId).Distinct().ToList();
 
-                npApi.NaturalPersonUpdateNotice(ids);
+                //npApi.NaturalPersonUpdateNotice(ids);
 
                 //npApi.NaturalPersonDeleteNaturalPerson(new System.Collections.Generic.List<Guid> { teste2.Id });
 

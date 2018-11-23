@@ -2590,14 +2590,8 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
             if (parentName != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "parentName", parentName)); // query parameter
             if (numRows != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "numRows", numRows)); // query parameter
             if (pageIndex != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "pageIndex", pageIndex)); // query parameter
-            if (gender != null && gender.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(gender); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = gender; // byte array
-            }
+            if (gender != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "gender", gender)); // query parameter
+
 
             // authentication (client_credentials) required
             // oauth required
@@ -2694,14 +2688,8 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
             if (parentName != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "parentName", parentName)); // query parameter
             if (numRows != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "numRows", numRows)); // query parameter
             if (pageIndex != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "pageIndex", pageIndex)); // query parameter
-            if (gender != null && gender.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(gender); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = gender; // byte array
-            }
+            if (gender != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "gender", gender)); // query parameter
+
 
             // authentication (client_credentials) required
             // oauth required
@@ -2807,14 +2795,8 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
             if (identifierDocumentNumber != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "identifierDocumentNumber", identifierDocumentNumber)); // query parameter
             if (numRows != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "numRows", numRows)); // query parameter
             if (pageIndex != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "pageIndex", pageIndex)); // query parameter
-            if (gender != null && gender.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(gender); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = gender; // byte array
-            }
+            if (gender != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "gender", gender)); // query parameter
+
 
             // authentication (client_credentials) required
             // oauth required
@@ -2920,14 +2902,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
             if (identifierDocumentNumber != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "identifierDocumentNumber", identifierDocumentNumber)); // query parameter
             if (numRows != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "numRows", numRows)); // query parameter
             if (pageIndex != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "pageIndex", pageIndex)); // query parameter
-            if (gender != null && gender.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(gender); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = gender; // byte array
-            }
+            if (gender != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "gender", gender)); // query parameter
 
             // authentication (client_credentials) required
             // oauth required
@@ -3203,14 +3178,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
             if (identifierDocumentNumber != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "identifierDocumentNumber", identifierDocumentNumber)); // query parameter
             if (numRows != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "numRows", numRows)); // query parameter
             if (pageIndex != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "pageIndex", pageIndex)); // query parameter
-            if (gender != null && gender.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(gender); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = gender; // byte array
-            }
+            if (gender != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "gender", gender)); // query parameter
 
             // authentication (client_credentials) required
             // oauth required
@@ -3316,14 +3284,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
             if (identifierDocumentNumber != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "identifierDocumentNumber", identifierDocumentNumber)); // query parameter
             if (numRows != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "numRows", numRows)); // query parameter
             if (pageIndex != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "pageIndex", pageIndex)); // query parameter
-            if (gender != null && gender.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(gender); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = gender; // byte array
-            }
+            if (gender != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "gender", gender)); // query parameter
 
             // authentication (client_credentials) required
             // oauth required

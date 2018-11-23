@@ -1052,14 +1052,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (classification != null && classification.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(classification); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = classification; // byte array
-            }
+            if (classification != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "classification", classification)); // query parameter
 
             // authentication (client_credentials) required
             // oauth required
@@ -1132,14 +1125,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (classification != null && classification.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(classification); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = classification; // byte array
-            }
+            if (classification != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "classification", classification)); // query parameter
 
             // authentication (client_credentials) required
             // oauth required

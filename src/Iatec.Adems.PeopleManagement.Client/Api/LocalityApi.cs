@@ -886,14 +886,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
             if (filter != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "filter", filter)); // query parameter
             if (countryId != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "countryId", countryId)); // query parameter
             if (parentId != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "parentId", parentId)); // query parameter
-            if (divisionType != null && divisionType.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(divisionType); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = divisionType; // byte array
-            }
+            if (divisionType != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "divisionType", divisionType)); // query parameter
 
             // authentication (client_credentials) required
             // oauth required
@@ -978,14 +971,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
             if (filter != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "filter", filter)); // query parameter
             if (countryId != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "countryId", countryId)); // query parameter
             if (parentId != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "parentId", parentId)); // query parameter
-            if (divisionType != null && divisionType.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(divisionType); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = divisionType; // byte array
-            }
+            if (divisionType != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "divisionType", divisionType)); // query parameter
 
             // authentication (client_credentials) required
             // oauth required

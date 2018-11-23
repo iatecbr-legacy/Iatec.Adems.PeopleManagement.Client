@@ -1005,14 +1005,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (naturalPersonIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "naturalPersonIdList", naturalPersonIdList)); // query parameter
-            if (relationship != null && relationship.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(relationship); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = relationship; // byte array
-            }
+            if (relationship != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "relationship", relationship)); // query parameter
 
             // authentication (client_credentials) required
             // oauth required
@@ -1088,14 +1081,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (naturalPersonIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "naturalPersonIdList", naturalPersonIdList)); // query parameter
-            if (relationship != null && relationship.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(relationship); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = relationship; // byte array
-            }
+            if (relationship != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "relationship", relationship)); // query parameter
 
             // authentication (client_credentials) required
             // oauth required
