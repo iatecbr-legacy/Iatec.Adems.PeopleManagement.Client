@@ -134,6 +134,30 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
         /// <returns>ApiResponse of List&lt;AddressTypeModel&gt;</returns>
         ApiResponse<List<AddressTypeModel>> GetListAddressTypeByIdListWithHttpInfo(List<Guid> idList = null);
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>List&lt;AddressTypeModel&gt;</returns>
+        List<AddressTypeModel> GetListAddressTypeForUpdate(bool onlyInUse, DateTime? updateDate = null);
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>ApiResponse (List&lt;AddressTypeModel&gt;)</returns>
+        ApiResponse<List<AddressTypeModel>> GetListAddressTypeForUpdateHttpInfo(bool onlyInUse, DateTime? updateDate = null);
+
         #endregion Synchronous Operations
 
         #region Asynchronous Operations
@@ -247,6 +271,31 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
         /// <param name="idList"> (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;AddressTypeModel&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<AddressTypeModel>>> GetListAddressTypeByIdListAsyncWithHttpInfo(List<Guid> idList = null);
+
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>Task of ApiResponse (List&lt;AddressTypeModel&gt;)</returns>
+        System.Threading.Tasks.Task<List<AddressTypeModel>> GetListAddressTypeForUpdateAsync(bool onlyInUse, DateTime? updateDate = null);
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>Task of ApiResponse (List&lt;AddressTypeModel&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<AddressTypeModel>>> GetListAddressTypeForUpdateAsyncHttpInfo(bool onlyInUse, DateTime? updateDate = null);
 
         #endregion Asynchronous Operations
     }
@@ -1057,5 +1106,154 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (List<AddressTypeModel>)Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<AddressTypeModel>)));
         }
+
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>List&lt;AddressTypeModel&gt;</returns>
+        public  List<AddressTypeModel> GetListAddressTypeForUpdate(bool onlyInUse, DateTime? updateDate = null)
+        {
+            ApiResponse<List<AddressTypeModel>> localVarResponse =  GetListAddressTypeForUpdateHttpInfo(onlyInUse, updateDate);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>ApiResponse (List&lt;AddressTypeModel&gt;)</returns>
+        public  ApiResponse<List<AddressTypeModel>> GetListAddressTypeForUpdateHttpInfo(bool onlyInUse, DateTime? updateDate = null)
+        {
+            var localVarPath = "/addressType/forUpdate";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "applications/json",
+                "applications/xml"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (updateDate != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "updateDate", updateDate)); // query parameter
+            localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "onlyInUse", onlyInUse)); // query parameter
+
+            // authentication (client_credentials) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetListAddressTypeForUpdate", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<AddressTypeModel>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<AddressTypeModel>)Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<AddressTypeModel>)));
+        }
+
+
+
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>Task of List&lt;AddressTypeModel&gt;</returns>
+        public async System.Threading.Tasks.Task<List<AddressTypeModel>> GetListAddressTypeForUpdateAsync(bool onlyInUse, DateTime? updateDate = null)
+        {
+            ApiResponse<List<AddressTypeModel>> localVarResponse = await GetListAddressTypeForUpdateAsyncHttpInfo(onlyInUse, updateDate);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>Task of ApiResponse (List&lt;AddressTypeModel&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<AddressTypeModel>>> GetListAddressTypeForUpdateAsyncHttpInfo(bool onlyInUse, DateTime? updateDate = null)
+        {
+            var localVarPath = "/addressType/forUpdate";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "applications/json",
+                "applications/xml"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (updateDate != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "updateDate", updateDate)); // query parameter
+            localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "onlyInUse", onlyInUse)); // query parameter
+
+            // authentication (client_credentials) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetListAddressTypeForUpdate", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<AddressTypeModel>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<AddressTypeModel>)Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<AddressTypeModel>)));
+        }
+
     }
 }

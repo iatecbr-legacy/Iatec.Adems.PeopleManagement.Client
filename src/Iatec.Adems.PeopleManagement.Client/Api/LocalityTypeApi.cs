@@ -202,6 +202,30 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> LocalityTypeSaveSystemReferenceWithHttpInfo(Guid? id);
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>List&lt;LocalityTypeLiteModel&gt;</returns>
+        List<LocalityTypeLiteModel> GetListLocalityTypeForUpdate(bool onlyInUse, DateTime? updateDate = null);
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>ApiResponse (List&lt;LocalityTypeLiteModel&gt;)</returns>
+        ApiResponse<List<LocalityTypeLiteModel>> GetListLocalityTypeForUpdateHttpInfo(bool onlyInUse, DateTime? updateDate = null);
+
         #endregion Synchronous Operations
 
         #region Asynchronous Operations
@@ -383,6 +407,32 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> LocalityTypeSaveSystemReferenceAsyncWithHttpInfo(Guid? id);
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>Task of ApiResponse (List&lt;LocalityTypeLiteModel&gt;)</returns>
+        System.Threading.Tasks.Task<List<LocalityTypeLiteModel>> GetListLocalityTypeForUpdateAsync(bool onlyInUse, DateTime? updateDate = null);
+
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>Task of ApiResponse (List&lt;LocalityTypeLiteModel&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<LocalityTypeLiteModel>>> GetListLocalityTypeForUpdateAsyncHttpInfo(bool onlyInUse, DateTime? updateDate = null);
+
 
         #endregion Asynchronous Operations
     }
@@ -1642,6 +1692,159 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 null);
+        }
+
+        
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>List&lt;LocalityTypeLiteModel&gt;</returns>
+        public List<LocalityTypeLiteModel> GetListLocalityTypeForUpdate(bool onlyInUse, DateTime? updateDate = null)
+        {
+            ApiResponse<List<LocalityTypeLiteModel>> localVarResponse = GetListLocalityTypeForUpdateHttpInfo(onlyInUse, updateDate);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>ApiResponse (List&lt;LocalityTypeLiteModel&gt;)</returns>
+        public ApiResponse<List<LocalityTypeLiteModel>> GetListLocalityTypeForUpdateHttpInfo(bool onlyInUse, DateTime? updateDate = null)
+        {
+            var localVarPath = "/localityType/forUpdate";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "applications/json",
+                "applications/xml"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (updateDate != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "updateDate", updateDate)); // query parameter
+            localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "onlyInUse", onlyInUse)); // query parameter
+
+            // authentication (client_credentials) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetListLocalityTypeForUpdate", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<LocalityTypeLiteModel>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<LocalityTypeLiteModel>)Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<LocalityTypeLiteModel>)));
+        }
+
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>Task of List&lt;LocalityTypeLiteModel&gt;</returns>
+        public async System.Threading.Tasks.Task<List<LocalityTypeLiteModel>> GetListLocalityTypeForUpdateAsync(bool onlyInUse, DateTime? updateDate = null)
+        {
+            ApiResponse<List<LocalityTypeLiteModel>> localVarResponse = await GetListLocalityTypeForUpdateAsyncHttpInfo(onlyInUse, updateDate);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>Task of ApiResponse (List&lt;LocalityTypeLiteModel&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<LocalityTypeLiteModel>>> GetListLocalityTypeForUpdateAsyncHttpInfo(bool onlyInUse, DateTime? updateDate = null)
+        {
+            var localVarPath = "/localityType/forUpdate";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "applications/json",
+                "applications/xml"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (updateDate != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "updateDate", updateDate)); // query parameter
+            localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "onlyInUse", onlyInUse)); // query parameter
+
+            // authentication (client_credentials) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetListLocalityTypeForUpdate", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<LocalityTypeLiteModel>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<LocalityTypeLiteModel>)Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<LocalityTypeLiteModel>)));
         }
     }
 }

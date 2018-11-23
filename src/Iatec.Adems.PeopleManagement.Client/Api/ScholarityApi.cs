@@ -134,6 +134,31 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> ScholaritySaveSystemReferenceWithHttpInfo(Guid? id);
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>List&lt;ScholarityModel&gt;</returns>
+        List<ScholarityModel> GetListScholarityForUpdate(bool onlyInUse, DateTime? updateDate = null);
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>ApiResponse (List&lt;ScholarityModel&gt;)</returns>
+        ApiResponse<List<ScholarityModel>> GetListScholarityForUpdateHttpInfo(bool onlyInUse, DateTime? updateDate = null);
+
+
         #endregion Synchronous Operations
 
         #region Asynchronous Operations
@@ -247,6 +272,33 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> ScholaritySaveSystemReferenceAsyncWithHttpInfo(Guid? id);
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>Task of ApiResponse (List&lt;ScholarityModel&gt;)</returns>
+        System.Threading.Tasks.Task<List<ScholarityModel>> GetListScholarityForUpdateAsync(bool onlyInUse, DateTime? updateDate = null);
+
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>Task of ApiResponse (List&lt;ScholarityModel&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<ScholarityModel>>> GetListScholarityForUpdateAsyncHttpInfo(bool onlyInUse, DateTime? updateDate = null);
+
+
 
         #endregion Asynchronous Operations
     }
@@ -1056,6 +1108,158 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 null);
+        }
+
+        
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>List&lt;ScholarityModel&gt;</returns>
+        public List<ScholarityModel> GetListScholarityForUpdate(bool onlyInUse, DateTime? updateDate = null)
+        {
+            ApiResponse<List<ScholarityModel>> localVarResponse = GetListScholarityForUpdateHttpInfo(onlyInUse, updateDate);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>ApiResponse (List&lt;ScholarityModel&gt;)</returns>
+        public ApiResponse<List<ScholarityModel>> GetListScholarityForUpdateHttpInfo(bool onlyInUse, DateTime? updateDate = null)
+        {
+            var localVarPath = "/scholarity/forUpdate";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "applications/json",
+                "applications/xml"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (updateDate != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "updateDate", updateDate)); // query parameter
+            localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "onlyInUse", onlyInUse)); // query parameter
+
+            // authentication (client_credentials) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetListScholarityForUpdate", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<ScholarityModel>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<ScholarityModel>)Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ScholarityModel>)));
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>Task of List&lt;ScholarityModel&gt;</returns>
+        public async System.Threading.Tasks.Task<List<ScholarityModel>> GetListScholarityForUpdateAsync(bool onlyInUse, DateTime? updateDate = null)
+        {
+            ApiResponse<List<ScholarityModel>> localVarResponse = await GetListScholarityForUpdateAsyncHttpInfo(onlyInUse, updateDate);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDate"> (optional)</param>
+        /// <param name="onlyInUse"> </param>        
+        /// <returns>Task of ApiResponse (List&lt;ScholarityModel&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<ScholarityModel>>> GetListScholarityForUpdateAsyncHttpInfo(bool onlyInUse, DateTime? updateDate = null)
+        {
+            var localVarPath = "/scholarity/forUpdate";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "applications/json",
+                "applications/xml"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (updateDate != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "updateDate", updateDate)); // query parameter
+            localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "onlyInUse", onlyInUse)); // query parameter
+
+            // authentication (client_credentials) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetListScholarityForUpdate", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<ScholarityModel>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<ScholarityModel>)Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ScholarityModel>)));
         }
     }
 }
