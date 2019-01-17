@@ -27,21 +27,14 @@ namespace TesteCliente
                 }
             };
 
-
-            //Bruno Lambert
-
-
             //client-credentials application
-            //const string CLIENT_ID = "0fbfaafa-c74b-4da2-9307-6fdcdc5cf58b";
-            //const string CLIENT_SECRET = "OLGSXm1Gf0MV8QfHASnepdXOLnIaBFBvMurCTGD5XnO7n3zAy1nX7AwOQ0lOtqjDYwDK783B9mY3jpCv";
-            //const string SCOPE = "peoplemgmt-ho";
-
-            const string CLIENT_ID = "6c5d026f-a4a5-4922-a37a-8009c171eec4";
-            const string CLIENT_SECRET = "H9jWiGAwwsTC3vobdvERv8yTQreySvKn743dx1w17XWapK7h2C6wBmpKFWxnUvfWLXR7M2892xFeEvPI";
-            const string SCOPE = "peoplemgmt.bra";
+            const string CLIENT_ID = "CLIENT_ID";
+            const string CLIENT_SECRET = "CLIENT_SECRET";
+            const string SCOPE = "peoplemgmt";
+;
 
             var httpClient = new HttpClient();
-            var discovery = httpClient.GetDiscoveryDocumentAsync("https://login.sdasystems.org").Result;
+            var discovery = httpClient.GetDiscoveryDocumentAsync("https://login-ho.sdasystems.org").Result;
 
             var clientCredentialsTokenRequest = new ClientCredentialsTokenRequest()
             {
@@ -56,9 +49,7 @@ namespace TesteCliente
             var apiConfig = new Configuration()
             {
                 AccessToken = tokens.AccessToken,
-                //BasePath = "http://localhost:60736/",//-dev,-ho
-                //BasePath = "https://ws-peoplemgmt.sdasystems.org/v1",//-dev,-ho
-                BasePath = "https://ws-peoplemgmt.sdasystems.org/bra/v2",//-dev,-ho
+                BasePath = "http://localhost:60736/",//-dev,-ho
             };
 
             //DocumentTypeTest(apiConfig);
@@ -67,8 +58,8 @@ namespace TesteCliente
             //CountryTest(apiConfig);
             //DiseaseTest(apiConfig);
             //EmergencyContactTest(apiConfig);
-            //AddressTest(apiConfig);
-            NaturalPersonTest(apiConfig);
+            AddressTest(apiConfig);
+            //NaturalPersonTest(apiConfig);
             //AddressTypeTest(apiConfig);
             //AllergyTypeTeste(apiConfig);
             //DisabilityTypeTeste(apiConfig);
@@ -188,8 +179,7 @@ namespace TesteCliente
                 throw;
             }
         }
-
-
+        
         private static bool NaturalPersonTest(Iatec.Adems.PeopleManagement.Client.Configuration apiConfig)
         {
             try
@@ -257,15 +247,16 @@ namespace TesteCliente
                 var api = new PersonAddressApi(apiConfig);
                 var atapi = new AddressTypeApi(apiConfig);
                 var npApi = new NaturalPersonApi(apiConfig);
-
-                var list = atapi.GetListAddressTypeByFilter();
-                var person2 = npApi.GetPageActiveByFilterForExternal(10, 0, "william de qua");
-                var saved = api.SavePersonAddress(new PersonAddressLiteModel
-                {
-                    AddressLine01 = "teste erro",
-                    AddressType = new AddressTypeModel { Id = list.First().Id },
-                    PersonId = person2.Items.FirstOrDefault().Id
-                });
+                
+               
+                var list = api.GetListPersonAddressByPerson(Guid.Parse("82a91dc7-5db2-4168-a7f9-a2f300e9d24d"));
+                //var person2 = npApi.GetPageActiveByFilterForExternal(10, 0, "william de qua");
+                //var saved = api.SavePersonAddress(new PersonAddressLiteModel
+                //{
+                //    AddressLine01 = "teste erro",
+                //    AddressType = new AddressTypeModel { Id = list.First().Id },
+                //    PersonId = person2.Items.FirstOrDefault().Id
+                //});
 
                 return true;
             }
