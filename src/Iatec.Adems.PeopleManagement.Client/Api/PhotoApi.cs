@@ -672,7 +672,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
             if (naturalPersonIdList == null)
                 throw new ApiException(400, "Missing required parameter 'naturalPersonIdList' when calling PhotoApi->GetListThumbnail");
 
-            var localVarPath = "/photo/getListThumbnailByNaturalPersonList";
+            var localVarPath = "/photo/listThumbnailByNaturalPersonList";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -695,7 +695,15 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "largestSide", largestSide)); // query parameter
-            if (naturalPersonIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "naturalPersonIdList", naturalPersonIdList)); // query parameter
+            //if (naturalPersonIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "naturalPersonIdList", naturalPersonIdList)); // query parameter
+            if (naturalPersonIdList != null && naturalPersonIdList.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(naturalPersonIdList); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = naturalPersonIdList; // byte array
+            }
 
             // authentication (client_credentials) required
             // oauth required
@@ -706,7 +714,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
@@ -735,7 +743,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
             if (naturalPersonIdList == null)
                 throw new ApiException(400, "Missing required parameter 'naturalPersonIdList' when calling PhotoApi->GetListThumbnail");
 
-            var localVarPath = "/photo/getListThumbnailByNaturalPersonList";
+            var localVarPath = "/photo/listThumbnailByNaturalPersonList";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -758,7 +766,15 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "largestSide", largestSide)); // query parameter
-            if (naturalPersonIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "naturalPersonIdList", naturalPersonIdList)); // query parameter
+            //if (naturalPersonIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "naturalPersonIdList", naturalPersonIdList)); // query parameter
+            if (naturalPersonIdList != null && naturalPersonIdList.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(naturalPersonIdList); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = naturalPersonIdList; // byte array
+            }
 
             // authentication (client_credentials) required
             // oauth required
@@ -769,7 +785,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;

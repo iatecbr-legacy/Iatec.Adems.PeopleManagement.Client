@@ -32,12 +32,16 @@ namespace TesteCliente
 
 
             //client-credentials application
-            const string CLIENT_ID = "0fbfaafa-c74b-4da2-9307-6fdcdc5cf58b";
-            const string CLIENT_SECRET = "OLGSXm1Gf0MV8QfHASnepdXOLnIaBFBvMurCTGD5XnO7n3zAy1nX7AwOQ0lOtqjDYwDK783B9mY3jpCv";
-            const string SCOPE = "peoplemgmt-ho";
+            //const string CLIENT_ID = "0fbfaafa-c74b-4da2-9307-6fdcdc5cf58b";
+            //const string CLIENT_SECRET = "OLGSXm1Gf0MV8QfHASnepdXOLnIaBFBvMurCTGD5XnO7n3zAy1nX7AwOQ0lOtqjDYwDK783B9mY3jpCv";
+            //const string SCOPE = "peoplemgmt-ho";
+
+            const string CLIENT_ID = "6c5d026f-a4a5-4922-a37a-8009c171eec4";
+            const string CLIENT_SECRET = "H9jWiGAwwsTC3vobdvERv8yTQreySvKn743dx1w17XWapK7h2C6wBmpKFWxnUvfWLXR7M2892xFeEvPI";
+            const string SCOPE = "peoplemgmt.bra";
 
             var httpClient = new HttpClient();
-            var discovery = httpClient.GetDiscoveryDocumentAsync("https://login-ho.sdasystems.org").Result;
+            var discovery = httpClient.GetDiscoveryDocumentAsync("https://login.sdasystems.org").Result;
 
             var clientCredentialsTokenRequest = new ClientCredentialsTokenRequest()
             {
@@ -52,13 +56,16 @@ namespace TesteCliente
             var apiConfig = new Configuration()
             {
                 AccessToken = tokens.AccessToken,
-                BasePath = "http://localhost:60736/",//-dev,-ho
-                //BasePath = "https://ws-peoplemgmt-ho.sdasystems.org/bra/",//-dev,-ho
+                //BasePath = "http://localhost:60736/",//-dev,-ho
+                //BasePath = "https://ws-peoplemgmt.sdasystems.org/v1",//-dev,-ho
+                BasePath = "https://ws-peoplemgmt.sdasystems.org/bra/v2",//-dev,-ho
             };
 
+            //DocumentTypeTest(apiConfig);
             //PhoneTypeTest(apiConfig);
             //LegalEntityTest(apiConfig);
             //CountryTest(apiConfig);
+            //DiseaseTest(apiConfig);
             //EmergencyContactTest(apiConfig);
             //AddressTest(apiConfig);
             NaturalPersonTest(apiConfig);
@@ -69,6 +76,34 @@ namespace TesteCliente
 
             Console.WriteLine("-- END --");
             Console.ReadLine();
+        }
+
+        private static bool DocumentTypeTest(Iatec.Adems.PeopleManagement.Client.Configuration apiConfig)
+        {
+            try
+            {
+                var documentTypeApi = new DocumentTypeApi(apiConfig);
+                var typeList = documentTypeApi.GetIdentifierByClassificationAsync(DocumentTypeClassificationModel.LegalEntity).Result;
+                return true;
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+        }
+
+        private static bool DiseaseTest(Iatec.Adems.PeopleManagement.Client.Configuration apiConfig)
+        {
+            try
+            {
+                var diseaseApi = new DiseaseApi(apiConfig);
+                var typeList = diseaseApi.GetListDiseaseByIdList(new List<Guid> { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() });
+                return true;
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
         }
 
         private static bool PhoneTypeTest(Iatec.Adems.PeopleManagement.Client.Configuration apiConfig)
@@ -91,7 +126,7 @@ namespace TesteCliente
             try
             {
                 var zipPostalCodeAddressApi = new ZipPostalCodeAddressApi(apiConfig);
-                var zipList = zipPostalCodeAddressApi.GetListZipPostalCodeAddressForSyncAsync(false, new DateTime(2018, 10, 30)).Result;
+                var zipList = zipPostalCodeAddressApi.GetListZipPostalCodeAddressForUpdateAsync(true, new DateTime(2018, 12, 4)).Result;
                 return true;
             }
             catch (ApiException)
@@ -105,7 +140,7 @@ namespace TesteCliente
             try
             {
                 var countryApi = new CountryApi(apiConfig);
-                var country = countryApi.GetCurrent();
+                var country = countryApi.GetPageAvailable(20, 0, "teste", new List<Guid> { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() });
                 return true;
             }
             catch (ApiException)
@@ -119,7 +154,7 @@ namespace TesteCliente
             try
             {
                 var legalEntityApi = new LegalEntityApi(apiConfig);
-                var legalEntity = legalEntityApi.GetByIdentifierDocumentNumber("43283811001636");
+                legalEntityApi.DeleteLegalEntity(new List<Guid> { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() });
                 return true;
             }
             catch (ApiException)
@@ -161,7 +196,18 @@ namespace TesteCliente
             {
                 var npApi = new NaturalPersonApi(apiConfig);
 
-                var teste = npApi.GetPageActiveByFilterForExternalAsync(10, 0,birthDate: "05-02-1994").Result;
+                var person = new NaturalPersonLiteExternalModel
+                {
+                    BirthDate = DateTime.UtcNow,
+                    FullName = "wilian de q moura",
+                    FirstName = "wilian",
+                    LastName = "moura",
+                    Gender = GenderModel.Male,
+                    IdentifierDocumentNumber = "91298431034",
+                    MotherName = "rosangela q moura",
+                };
+
+                var teste = npApi.SaveForExternal(person);
                 //var teste = npApi.GetPageActiveByFilterForExternal(0,1);
 
                 //var teste = npApi.SaveForExternal(new NaturalPersonLiteExternalModel
@@ -235,14 +281,14 @@ namespace TesteCliente
             {
                 var api = new AddressTypeApi(apiConfig);
 
-                var list = api.GetListAddressTypeByFilter();
+                var list = api.GetListAddressTypeByIdList(new List<Guid> { Guid.NewGuid(), Guid.NewGuid() });
 
-                var obj = api.GetAddressTypeById(list.First().Id);
+                //var obj = api.GetAddressTypeById(list.First().Id);
 
-                var idList = list.Select(a => a.Id).ToList();
-                var t2 = api.GetListAddressTypeByIdList(idList);
+                //var idList = list.Select(a => a.Id).ToList();
+                //var t2 = api.GetListAddressTypeByIdList(idList);
 
-                api.AddressTypeSaveSystemReference(obj.Id);
+                //api.AddressTypeSaveSystemReference(obj.Id);
 
                 return true;
             }

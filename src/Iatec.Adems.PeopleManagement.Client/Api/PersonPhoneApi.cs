@@ -816,7 +816,15 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (personIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "personIdList", personIdList)); // query parameter
+            //if (personIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "personIdList", personIdList)); // query parameter
+            if (personIdList != null && personIdList.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(personIdList); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = personIdList; // byte array
+            }
 
             // authentication (client_credentials) required
             // oauth required
@@ -827,7 +835,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
@@ -885,7 +893,15 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (personIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "personIdList", personIdList)); // query parameter
+            //if (personIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "personIdList", personIdList)); // query parameter
+            if (personIdList != null && personIdList.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(personIdList); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = personIdList; // byte array
+            }
 
             // authentication (client_credentials) required
             // oauth required
@@ -896,7 +912,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
@@ -1100,7 +1116,15 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (personIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "personIdList", personIdList)); // query parameter
+            //if (personIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "personIdList", personIdList)); // query parameter
+            if (personIdList != null && personIdList.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(personIdList); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = personIdList; // byte array
+            }
 
             // authentication (client_credentials) required
             // oauth required
@@ -1111,7 +1135,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
@@ -1169,7 +1193,15 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (personIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "personIdList", personIdList)); // query parameter
+            //if (personIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "personIdList", personIdList)); // query parameter
+            if (personIdList != null && personIdList.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(personIdList); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = personIdList; // byte array
+            }
 
             // authentication (client_credentials) required
             // oauth required
@@ -1180,7 +1212,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
@@ -1245,7 +1277,15 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (phoneTypeId != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "phoneTypeId", phoneTypeId)); // query parameter
-            if (personIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "personIdList", personIdList)); // query parameter
+            //if (personIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "personIdList", personIdList)); // query parameter
+            if (personIdList != null && personIdList.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(personIdList); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = personIdList; // byte array
+            }
 
             // authentication (client_credentials) required
             // oauth required
@@ -1256,7 +1296,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
@@ -1321,7 +1361,15 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (phoneTypeId != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "phoneTypeId", phoneTypeId)); // query parameter
-            if (personIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "personIdList", personIdList)); // query parameter
+            //if (personIdList != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("multi", "personIdList", personIdList)); // query parameter
+            if (personIdList != null && personIdList.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(personIdList); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = personIdList; // byte array
+            }
 
             // authentication (client_credentials) required
             // oauth required
@@ -1332,7 +1380,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;

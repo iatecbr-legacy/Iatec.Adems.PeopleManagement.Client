@@ -55,7 +55,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
         /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="filter"> (optional)</param>
         /// <returns>List&lt;ZipPostalCodeAddressLiteModel&gt;</returns>
-        List<ZipPostalCodeAddressLiteModel> GetListZipPostalCodeAddressForSync(bool onlyInUse, DateTime? updateDate = null);
+        List<ZipPostalCodeAddressLiteModel> GetListZipPostalCodeAddressForUpdate(bool onlyInUse, DateTime? updateDate = null);
 
         /// <summary>
         ///
@@ -66,7 +66,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
         /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="filter"> (optional)</param>
         /// <returns>ApiResponse of List&lt;ZipPostalCodeAddressLiteModel&gt;</returns>
-        ApiResponse<List<ZipPostalCodeAddressLiteModel>> GetListZipPostalCodeAddressForSyncWithHttpInfo(bool onlyInUse, DateTime? updateDate = null);
+        ApiResponse<List<ZipPostalCodeAddressLiteModel>> GetListZipPostalCodeAddressForUpdateWithHttpInfo(bool onlyInUse, DateTime? updateDate = null);
 
         /// <summary>
         ///
@@ -89,31 +89,6 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> ZipPostalCodeAddressSaveSystemReferenceWithHttpInfo(Guid? id);
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <remarks>
-        ///
-        /// </remarks>
-        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="updateDate"> (optional)</param>
-        /// <param name="onlyInUse"> </param>        
-        /// <returns>List&lt;ZipPostalCodeAddressLiteModel&gt;</returns>
-        List<ZipPostalCodeAddressLiteModel> GetListZipPostalCodeAddressForUpdate(bool onlyInUse, DateTime? updateDate = null);
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <remarks>
-        ///
-        /// </remarks>
-        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="updateDate"> (optional)</param>
-        /// <param name="onlyInUse"> </param>        
-        /// <returns>ApiResponse (List&lt;ZipPostalCodeAddressLiteModel&gt;)</returns>
-        ApiResponse<List<ZipPostalCodeAddressLiteModel>> GetListZipPostalCodeAddressForUpdateHttpInfo(bool onlyInUse, DateTime? updateDate = null);
-
 
 
         #endregion Synchronous Operations
@@ -151,7 +126,7 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
         /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="filter"> (optional)</param>
         /// <returns>Task of List&lt;ZipPostalCodeAddressLiteModel&gt;</returns>
-        System.Threading.Tasks.Task<List<ZipPostalCodeAddressLiteModel>> GetListZipPostalCodeAddressForSyncAsync(bool onlyInUse, DateTime? updateDate = null);
+        System.Threading.Tasks.Task<List<ZipPostalCodeAddressLiteModel>> GetListZipPostalCodeAddressForUpdateAsync(bool onlyInUse, DateTime? updateDate = null);
 
         /// <summary>
         ///
@@ -162,34 +137,8 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
         /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="filter"> (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;ZipPostalCodeAddressLiteModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<ZipPostalCodeAddressLiteModel>>> GetListZipPostalCodeAddressForSyncAsyncWithHttpInfo(bool onlyInUse, DateTime? updateDate = null);
+        System.Threading.Tasks.Task<ApiResponse<List<ZipPostalCodeAddressLiteModel>>> GetListZipPostalCodeAddressForUpdateAsyncWithHttpInfo(bool onlyInUse, DateTime? updateDate = null);
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <remarks>
-        ///
-        /// </remarks>
-        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="updateDate"> (optional)</param>
-        /// <param name="onlyInUse"> </param>        
-        /// <returns>Task of ApiResponse (List&lt;ZipPostalCodeAddressLiteModel&gt;)</returns>
-        System.Threading.Tasks.Task<List<ZipPostalCodeAddressLiteModel>> GetListZipPostalCodeAddressForUpdateAsync(bool onlyInUse, DateTime? updateDate = null);
-
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <remarks>
-        ///
-        /// </remarks>
-        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="updateDate"> (optional)</param>
-        /// <param name="onlyInUse"> </param>        
-        /// <returns>Task of ApiResponse (List&lt;ZipPostalCodeAddressLiteModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<ZipPostalCodeAddressLiteModel>>> GetListZipPostalCodeAddressForUpdateAsyncHttpInfo(bool onlyInUse, DateTime? updateDate = null);
-
-                     
         /// <summary>
         ///
         /// </summary>
@@ -462,9 +411,9 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
         /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="filter"> (optional)</param>
         /// <returns>List&lt;ZipPostalCodeAddressLiteModel&gt;</returns>
-        public List<ZipPostalCodeAddressLiteModel> GetListZipPostalCodeAddressForSync(bool onlyInUse, DateTime? updateDate = null)
+        public List<ZipPostalCodeAddressLiteModel> GetListZipPostalCodeAddressForUpdate(bool onlyInUse, DateTime? updateDate = null)
         {
-            ApiResponse<List<ZipPostalCodeAddressLiteModel>> localVarResponse = GetListZipPostalCodeAddressForSyncWithHttpInfo(onlyInUse, updateDate);
+            ApiResponse<List<ZipPostalCodeAddressLiteModel>> localVarResponse = GetListZipPostalCodeAddressForUpdateWithHttpInfo(onlyInUse, updateDate);
             return localVarResponse.Data;
         }
 
@@ -474,9 +423,9 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
         /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="filter"> (optional)</param>
         /// <returns>ApiResponse of List&lt;ZipPostalCodeAddressLiteModel&gt;</returns>
-        public ApiResponse<List<ZipPostalCodeAddressLiteModel>> GetListZipPostalCodeAddressForSyncWithHttpInfo(bool onlyInUse, DateTime? updateDate = null)
+        public ApiResponse<List<ZipPostalCodeAddressLiteModel>> GetListZipPostalCodeAddressForUpdateWithHttpInfo(bool onlyInUse, DateTime? updateDate = null)
         {
-            var localVarPath = "/ZipPostalCodeAddress/forSync";
+            var localVarPath = "/ZipPostalCodeAddress/forUpdate";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -500,151 +449,6 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
 
             localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "onlyInUse", onlyInUse)); // query parameter
             if (updateDate != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "updateDate", updateDate)); // query parameter
-
-            // authentication (client_credentials) required
-            // oauth required
-            if (!String.IsNullOrEmpty(Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("GetListZipPostalCodeAddressForSync", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<List<ZipPostalCodeAddressLiteModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<ZipPostalCodeAddressLiteModel>)Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ZipPostalCodeAddressLiteModel>)));
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter"> (optional)</param>
-        /// <returns>Task of List&lt;ZipPostalCodeAddressLiteModel&gt;</returns>
-        public async System.Threading.Tasks.Task<List<ZipPostalCodeAddressLiteModel>> GetListZipPostalCodeAddressForSyncAsync(bool onlyInUse, DateTime? updateDate = null)
-        {
-            ApiResponse<List<ZipPostalCodeAddressLiteModel>> localVarResponse = await GetListZipPostalCodeAddressForSyncAsyncWithHttpInfo(onlyInUse, updateDate);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter"> (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;ZipPostalCodeAddressLiteModel&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<ZipPostalCodeAddressLiteModel>>> GetListZipPostalCodeAddressForSyncAsyncWithHttpInfo(bool onlyInUse, DateTime? updateDate = null)
-        {
-            var localVarPath = "/ZipPostalCodeAddress/forSync";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "applications/json",
-                "applications/xml"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-            
-            if (updateDate != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "updateDate", updateDate)); // query parameter
-            localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "onlyInUse", onlyInUse)); // query parameter
-
-            // authentication (client_credentials) required
-            // oauth required
-            if (!String.IsNullOrEmpty(Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("GetListZipPostalCodeAddressForSync", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<List<ZipPostalCodeAddressLiteModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<ZipPostalCodeAddressLiteModel>)Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ZipPostalCodeAddressLiteModel>)));
-        }
-
-        
-
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="updateDate"> (optional)</param>
-        /// <param name="onlyInUse"> </param>        
-        /// <returns>List&lt;ZipPostalCodeAddressLiteModel&gt;</returns>
-        public List<ZipPostalCodeAddressLiteModel> GetListZipPostalCodeAddressForUpdate(bool onlyInUse, DateTime? updateDate = null)
-        {
-            ApiResponse<List<ZipPostalCodeAddressLiteModel>> localVarResponse = GetListZipPostalCodeAddressForUpdateHttpInfo(onlyInUse, updateDate);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="updateDate"> (optional)</param>
-        /// <param name="onlyInUse"> </param>        
-        /// <returns>ApiResponse (List&lt;ZipPostalCodeAddressLiteModel&gt;)</returns>
-        public ApiResponse<List<ZipPostalCodeAddressLiteModel>> GetListZipPostalCodeAddressForUpdateHttpInfo(bool onlyInUse, DateTime? updateDate = null)
-        {
-            var localVarPath = "/zipPostalCodeAddress/forUpdate";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "applications/json",
-                "applications/xml"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (updateDate != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "updateDate", updateDate)); // query parameter
-            localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "onlyInUse", onlyInUse)); // query parameter
 
             // authentication (client_credentials) required
             // oauth required
@@ -671,34 +475,25 @@ namespace Iatec.Adems.PeopleManagement.Client.Api
                 (List<ZipPostalCodeAddressLiteModel>)Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ZipPostalCodeAddressLiteModel>)));
         }
 
-
         /// <summary>
         ///
         /// </summary>
-        /// <remarks>
-        ///
-        /// </remarks>
         /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="updateDate"> (optional)</param>
-        /// <param name="onlyInUse"> </param>        
+        /// <param name="filter"> (optional)</param>
         /// <returns>Task of List&lt;ZipPostalCodeAddressLiteModel&gt;</returns>
         public async System.Threading.Tasks.Task<List<ZipPostalCodeAddressLiteModel>> GetListZipPostalCodeAddressForUpdateAsync(bool onlyInUse, DateTime? updateDate = null)
         {
-            ApiResponse<List<ZipPostalCodeAddressLiteModel>> localVarResponse = await GetListZipPostalCodeAddressForUpdateAsyncHttpInfo(onlyInUse, updateDate);
+            ApiResponse<List<ZipPostalCodeAddressLiteModel>> localVarResponse = await GetListZipPostalCodeAddressForUpdateAsyncWithHttpInfo(onlyInUse, updateDate);
             return localVarResponse.Data;
         }
 
         /// <summary>
         ///
         /// </summary>
-        /// <remarks>
-        ///
-        /// </remarks>
         /// <exception cref="Iatec.Adems.PeopleManagement.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="updateDate"> (optional)</param>
-        /// <param name="onlyInUse"> </param>        
+        /// <param name="filter"> (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;ZipPostalCodeAddressLiteModel&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<ZipPostalCodeAddressLiteModel>>> GetListZipPostalCodeAddressForUpdateAsyncHttpInfo(bool onlyInUse, DateTime? updateDate = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<ZipPostalCodeAddressLiteModel>>> GetListZipPostalCodeAddressForUpdateAsyncWithHttpInfo(bool onlyInUse, DateTime? updateDate = null)
         {
             var localVarPath = "/ZipPostalCodeAddress/forUpdate";
             var localVarPathParams = new Dictionary<String, String>();
